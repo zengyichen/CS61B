@@ -29,7 +29,7 @@ public class TimeSLList {
         AList<Double> times = new AList<>();
         AList<Integer> opCounts = new AList<>();
 
-        for (int n = 1000; n <= 8000; n *= 2) {
+        for (int n = 1000; n <= 128000; n *= 2) {
             SLList<Integer> a = new SLList<>();
             int timesOfAddLastLeft = n;
             while (timesOfAddLastLeft > 0) {
