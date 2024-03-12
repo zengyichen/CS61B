@@ -5,8 +5,6 @@
 
 package deque;
 
-import net.sf.saxon.expr.Component;
-
 public class ArrayDeque<T> implements Deque<T> {
     private static int MINLENGTH =  16;
     private int size, length;

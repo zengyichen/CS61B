@@ -1,7 +1,5 @@
 package deque;
 
-import afu.org.checkerframework.checker.oigj.qual.O;
-
 public interface Deque<T> {
     void addFirst(T item);
     void addLast(T item);
