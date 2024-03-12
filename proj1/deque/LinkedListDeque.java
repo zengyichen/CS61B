@@ -139,15 +139,12 @@ public class LinkedListDeque<T> implements Deque<T> {
         }
         if (size() != ((Deque) o).size())
             return false;
+        LinkedListNode<T> iter = sentinel;
         for (int i = 0; i < size(); i++) {
-            T val1 = (T) get(i);
+            iter = iter.next;
+            T val1 = iter.value;
             T val2 = (T) ((Deque) o).get(i);
             if (!val1.equals(val2)) {
-                /**
-                 * why not (val1 != val2)?
-                 * == and != might not been defined for generic type T
-                 * but .equals does.
-                 */
                 return false;
             }
         }
