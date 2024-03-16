@@ -78,13 +78,6 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     /**
-     * Returns true if deque is empty, false otherwise.
-     */
-    public boolean isEmpty() {
-        return tail == head;
-    }
-
-    /**
      * Returns the number of items in the deque.
      */
     public int size() {
