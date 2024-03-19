@@ -30,7 +30,7 @@ public class ArrayDeque<T> implements Deque<T> {
 
         @Override
         public boolean hasNext() {
-            return pos < size;
+            return pos + 1 < size;
         }
     }
 
