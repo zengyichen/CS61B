@@ -5,6 +5,8 @@
 
 package deque;
 
+import java.util.Iterator;
+
 public class ArrayDeque<T> implements Deque<T> {
     private static int MINLENGTH =  16;
     private int size, length;
@@ -13,6 +15,28 @@ public class ArrayDeque<T> implements Deque<T> {
     private int head, tail;
 
     private T[] items;
+
+    private class ArrayDequeIterator implements Iterator<T> {
+        private int pos;
+
+        public ArrayDequeIterator() {
+            pos = 0;
+        }
+
+        @Override
+        public T next() {
+            return items[pos++];
+        }
+
+        @Override
+        public boolean hasNext() {
+            return pos < size;
+        }
+    }
+
+    public Iterator<T> iterator() {
+        return new ArrayDequeIterator();
+    }
 
     /**
      * Convert circular index x to array index.
@@ -156,13 +180,14 @@ public class ArrayDeque<T> implements Deque<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (! (o instanceof Deque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
-        if (size() != ((Deque) o).size())
+        if (size() != ((Deque) o).size()) {
             return false;
+        }
         for (int i = 0; i < size(); i++) {
-            T val1 = (T) get(i);
+            T val1 = get(i);
             T val2 = (T) ((Deque) o).get(i);
             if (!val1.equals(val2)) {
                 /**

@@ -5,9 +5,35 @@
 
 package deque;
 
+import java.util.Iterator;
+
 public class LinkedListDeque<T> implements Deque<T> {
     private int size;
     private LinkedListNode<T> sentinel;
+
+    private class ArrayDequeIterator implements Iterator<T> {
+        private LinkedListNode<T> pos;
+
+        public ArrayDequeIterator() {
+            pos = sentinel;
+        }
+
+        @Override
+        public T next() {
+            pos = pos.next;
+            T ret = pos.value;
+            return ret;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return pos.next != sentinel;
+        }
+    }
+
+    public Iterator<T> iterator() {
+        return new ArrayDequeIterator();
+    }
 
     /**
      * Creates an empty LLDeque.
@@ -127,7 +153,7 @@ public class LinkedListDeque<T> implements Deque<T> {
      */
     @Override
     public boolean equals(Object o) {
-        if (! (o instanceof Deque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
         if (size() != ((Deque) o).size())

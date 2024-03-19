@@ -160,4 +160,18 @@ public class LinkedListDequeTest {
             assertEquals(lld1, lld2);
         }
     }
+
+    @Test
+    public void iterableTest() {
+        LinkedListDeque<Integer> lld = new LinkedListDeque<>();
+        lld.addFirst(1);
+        lld.addFirst(4);
+        lld.addFirst(2);
+        lld.addFirst(8);
+        int i = 0;
+        for (Integer u : lld) {
+            assertEquals(u, lld.get(i));
+            i++;
+        }
+    }
 }
